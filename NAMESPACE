@@ -2,6 +2,6 @@
 
 export("%>%")
 export(download_macdb)
-export(load_dataset)
+export(load_table)
 importFrom(here,here)
 importFrom(magrittr,"%>%")

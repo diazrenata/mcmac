@@ -1,0 +1,43 @@
+---
+title: "Intro: load and explore MACD"
+output: github_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+library(mcmac)
+library(dplyr)
+library(ggplot2)
+```
+
+```{r download data}
+
+if(FALSE) {
+  download_macdb(from_url = TRUE)
+} else {
+  download_macdb()
+}
+```
+
+This is how many experiments are entered per taxon. This isn't unique papers.
+
+```{r experiments data}
+
+experiments <- load_table("experiments_analysis_data")
+
+experiments_summary <- experiments %>%
+  group_by(taxa) %>%
+  summarize(n_raw_abund = sum(raw_abundance),
+            n_mean_abund = sum(mean_abundance)) %>%
+  ungroup() %>%
+  tidyr::gather(-taxa, key = "abundance_metric", value = "n_experiments")
+
+exp_plot <- ggplot(data = experiments_summary, aes(x = taxa, y = n_experiments)) +
+  geom_col() +
+  facet_wrap(vars(abundance_metric)) +
+  theme_bw() +
+  theme(axis.text.x = element_text(angle = 60, hjust = 1))
+
+exp_plot
+
+```

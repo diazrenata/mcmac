@@ -1,3 +1,12 @@
 ^mcmac\.Rproj$
 ^\.Rproj\.user$
 ^LICENSE\.md$
+^reports/introduction\.Rmd$
+^working-data$
+^working-data/*$
+^inst$
+^inst/data/sites_analysis_data.csv*$
+^inst/data/ref_analysis_data.csv*$
+^inst/data/orderedcomparisons.csv*$
+^inst/data/experiments_analysis_data.csv*$
+^inst/data/community_analysis_data.csv*$
