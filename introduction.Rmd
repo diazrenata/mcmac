@@ -1,0 +1,18 @@
+---
+title: "Intro: load and explore MACD"
+output: github_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(mcmac)
+```
+
+```{r download data}
+
+if(FALSE) {
+  download_macdb(from_url = TRUE)
+} else {
+  download_macdb()
+}
+```
