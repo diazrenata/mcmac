@@ -9,7 +9,7 @@
 #' @importFrom here here
 download_macdb <- function(from_url = FALSE, storage_path = here::here("working-data")) {
 
-  inst_path = file.path(system.file(package= "mcmac"), "mcdb")
+  inst_path = file.path(system.file(package= "mcmac"), "macd")
 
   if(!dir.exists(file.path(storage_path))) {
     dir.create(file.path(storage_path), recursive = T)
@@ -17,21 +17,21 @@ download_macdb <- function(from_url = FALSE, storage_path = here::here("working-
 
   if(from_url) {
 
-    if(!dir.exists(file.path(storage_path, "mcdb"))) {
-      dir.create(file.path(storage_path, "mcdb"))
+    if(!dir.exists(file.path(storage_path, "macd"))) {
+      dir.create(file.path(storage_path, "macd"))
     }
 
-    download.file(url = "https://ndownloader.figshare.com/files/3156878", destfile = file.path(storage_path,"mcdb", "community_analysis_data.csv"))
+    download.file(url = "https://ndownloader.figshare.com/files/3156878", destfile = file.path(storage_path,"macd", "community_analysis_data.csv"))
 
-    download.file(url = "https://ndownloader.figshare.com/files/3156887", destfile = file.path(storage_path,"mcdb", "orderedcomparisons.csv"))
+    download.file(url = "https://ndownloader.figshare.com/files/3156887", destfile = file.path(storage_path,"macd", "orderedcomparisons.csv"))
 
-    download.file(url = "https://ndownloader.figshare.com/files/3156893", destfile = file.path(storage_path,"mcdb", "sites_analysis_data.csv"))
+    download.file(url = "https://ndownloader.figshare.com/files/3156893", destfile = file.path(storage_path,"macd", "sites_analysis_data.csv"))
 
-    download.file(url = "https://ndownloader.figshare.com/files/3156884", destfile = file.path(storage_path,"mcdb", "experiments_analysis_data.csv"))
+    download.file(url = "https://ndownloader.figshare.com/files/3156884", destfile = file.path(storage_path,"macd", "experiments_analysis_data.csv"))
 
-    download.file(url = "https://ndownloader.figshare.com/files/3156890", destfile = file.path(storage_path,"mcdb", "ref_analysis_data.csv"))
+    download.file(url = "https://ndownloader.figshare.com/files/3156890", destfile = file.path(storage_path,"macd", "ref_analysis_data.csv"))
 
-    download.file(url = "https://ndownloader.figshare.com/files/1429961", destfile = file.path(storage_path,"mcdb", "MACD_metadata.pdf"))
+    download.file(url = "https://ndownloader.figshare.com/files/1429961", destfile = file.path(storage_path,"macd", "MACD_metadata.pdf"))
 
 
   } else {
@@ -47,7 +47,7 @@ download_macdb <- function(from_url = FALSE, storage_path = here::here("working-
 #' @return something
 #' @export
 #'
-load_table <- function(tablename, storage_path = here::here("working-data", "mcdb")) {
+load_table <- function(tablename, storage_path = here::here("working-data", "macd")) {
 
   dataset_path = file.path(storage_path, paste0(tablename, ".csv"))
 

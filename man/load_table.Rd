@@ -4,7 +4,7 @@
 \alias{load_table}
 \title{Load a dataset}
 \usage{
-load_table(tablename, storage_path = here::here("working-data", "mcdb"))
+load_table(tablename, storage_path = here::here("working-data", "macd"))
 }
 \arguments{
 \item{tablename}{table name}

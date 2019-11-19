@@ -41,3 +41,37 @@ exp_plot <- ggplot(data = experiments_summary, aes(x = taxa, y = n_experiments))
 exp_plot
 
 ```
+
+How many species are we looking at per taxon?
+
+```{r species breakdown}
+
+communities <- load_table("community_analysis_data")
+
+species <- select(communities, siteID, family, genus, species, id2species) %>% 
+  left_join(select(experiments, siteID, taxa), by = "siteID")
+
+unique_species <- select(species, family, genus, species, id2species, taxa) %>%
+  distinct()
+
+ntaxa <- unique_species %>%
+  group_by(taxa) %>%
+  summarise(nspecies = dplyr::n()) %>%
+  ungroup()
+
+taxon_plot <- ggplot(data = ntaxa, aes(x = taxa, y = nspecies)) +
+ geom_col() +
+  geom_label(aes(x = taxa, y = nspecies + 25, label = nspecies)) +
+  theme_bw() +
+  theme(axis.text.x = element_text(angle = 60, hjust = 1)) +
+  ylab("Number of species")
+
+taxon_plot
+
+```
+
+Here is how many species are not id'd to species (0), id'd to species (1), or id'd to a pair of morphospeices (2): 
+
+```{r table unique species}
+table(select(distinct(select(unique_species, -taxa)), id2species))
+```
